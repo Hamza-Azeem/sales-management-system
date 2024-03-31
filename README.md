@@ -1,4 +1,5 @@
-# sales-management-system 
+# sales-management-system
+Rest service for a sales management system
 # Products Management
 1. Fetch products and view id, name, description, category, creation date,
 available quantity, and price.
