@@ -17,6 +17,10 @@ public class ClientController {
     public List<ClientDTO> findAllClients(){
         return clientService.findAllClients();
     }
+    @GetMapping("/{id}")
+    public ClientDTO findClientById(@PathVariable long id){
+        return clientService.findClientById(id);
+    }
     @PostMapping
     public ClientDTO saveClient(@RequestBody ClientDTO clientDTO){
         return clientService.saveClient(clientDTO);
