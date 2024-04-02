@@ -15,7 +15,7 @@ public class ClientMapper {
                 .mobile(client.getMobile())
                 .email(client.getEmail())
                 .address(client.getAddress())
-//                .password(client.getPassword())
+                .password(client.getPassword())
 //                .authorities(client.getAuthorities().stream().collect(Collectors.toList()))
                 .build();
         return clientDTO;
@@ -28,7 +28,7 @@ public class ClientMapper {
                 .mobile(clientDTO.getMobile())
                 .email(clientDTO.getEmail())
                 .address(clientDTO.getAddress())
-//                .password(clientDTO.getPassword())
+                .password(clientDTO.getPassword())
 //                .authorities(clientDTO.getAuthorities().stream().collect(Collectors.toSet()))
                 .build();
         return client;

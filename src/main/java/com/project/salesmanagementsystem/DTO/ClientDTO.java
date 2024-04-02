@@ -24,8 +24,8 @@ public class ClientDTO {
     private String email;
     @NotEmpty
     private String address;
-//    @NotEmpty
-//    @Size(min = 8, max = 50)
-//    private String password;
+    @NotEmpty
+    @Size(min = 8, max = 150)
+    private String password;
 //    private List<Authority> authorities;
 }
