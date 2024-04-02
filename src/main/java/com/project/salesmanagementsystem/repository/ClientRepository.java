@@ -14,4 +14,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT COUNT(id), address FROM clients GROUP BY address", nativeQuery = true)
     List<Object[]> findClientAddressStats();
     Optional<Client> findClientByEmail(String email);
+    boolean existsByEmail(String email);
 }
