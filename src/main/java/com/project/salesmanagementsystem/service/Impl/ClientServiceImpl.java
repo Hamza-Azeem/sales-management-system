@@ -8,6 +8,7 @@ import com.project.salesmanagementsystem.model.Client;
 import com.project.salesmanagementsystem.repository.ClientRepository;
 import com.project.salesmanagementsystem.service.ClientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -24,6 +25,7 @@ import static com.project.salesmanagementsystem.mapper.ClientMapper.mapToClientD
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
+    private final PasswordEncoder passwordEncoder;
     @Override
     public List<ClientDTO> findAllClients() {
         return clientRepository.findAll() != null ? clientRepository.findAll().stream()
@@ -48,6 +50,7 @@ public class ClientServiceImpl implements ClientService {
         if(optionalClient.isEmpty()){
             throw new ObjectNotFoundException("No client record with id=%s was found!".formatted(clientDTO.getId()));
         }
+        clientDTO.setPassword(passwordEncoder.encode(clientDTO.getPassword()));
         Client client = clientRepository.save(mapToClient(clientDTO));
         return mapToClientDto(client);
     }
