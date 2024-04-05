@@ -1,6 +1,5 @@
 package com.project.salesmanagementsystem.config;
 
-import com.project.salesmanagementsystem.service.Impl.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +18,12 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
-    private final AuthenticationService authenticationService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/clients/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET,"/sales/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

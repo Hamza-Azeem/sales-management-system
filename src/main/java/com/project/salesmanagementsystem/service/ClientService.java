@@ -2,6 +2,7 @@ package com.project.salesmanagementsystem.service;
 
 import com.project.salesmanagementsystem.DTO.ClientDTO;
 import com.project.salesmanagementsystem.DTO.LocationStatDTO;
+import com.project.salesmanagementsystem.DTO.LoginDTO;
 import com.project.salesmanagementsystem.DTO.ProductDTO;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface ClientService {
     public void deleteClientById(long id);
     public ClientDTO findClientById(long id);
     public List<LocationStatDTO> findLocationStats();
+    public boolean isClientPresent(String email);
 }
