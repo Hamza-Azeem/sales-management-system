@@ -7,8 +7,10 @@ import com.project.salesmanagementsystem.model.Product;
 import com.project.salesmanagementsystem.repository.ProductRepository;
 import com.project.salesmanagementsystem.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -45,8 +47,10 @@ public class ProductServiceImpl implements ProductService {
         if(productOptional.isEmpty()){
             throw new ObjectNotFoundException("No product record with id=%s was found!".formatted(productDTO.getId()));
         }
-        Product product = productRepository.save(mapToProduct(productDTO));
-        return mapToProductDto(product);
+        Timestamp creationDate = productOptional.get().getCreationDate();
+        Product product = mapToProduct(productDTO);
+        product.setCreationDate(creationDate);
+        return mapToProductDto(productRepository.save(product));
     }
 
     @Override
